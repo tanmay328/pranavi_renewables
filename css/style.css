@@ -63,7 +63,6 @@
   --shadow-sm: 0 2px 8px rgba(15, 46, 26, 0.05);
   --shadow-md: 0 8px 24px rgba(15, 46, 26, 0.08);
   --shadow-lg: 0 16px 36px rgba(15, 46, 26, 0.12);
-  --shadow-card: 0 4px 16px rgba(15, 46, 26, 0.06);
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -80,6 +79,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -89,8 +91,15 @@ body {
   background-color: var(--color-white);
   line-height: 1.65;
   font-size: 1.05rem;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+body.nav-open {
+  overflow: hidden;
+  touch-action: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -172,27 +181,6 @@ img {
   flex-shrink: 0;
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  gap: clamp(1rem, 1.8vw, 2rem);
-  margin: 0 auto; /* Nicely centered in between */
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-shrink: 0;
-}
-
-.brand-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
 .brand-logo img {
   height: 52px;
   width: auto;
@@ -203,7 +191,8 @@ img {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 1.75rem;
+  gap: clamp(1rem, 1.8vw, 2rem);
+  margin: 0 auto;
 }
 
 .nav-links li a {
@@ -247,6 +236,7 @@ img {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 .header-cta-btn {
@@ -272,94 +262,46 @@ img {
   box-shadow: 0 4px 12px rgba(46, 125, 79, 0.25);
 }
 
-/* Mobile Menu Toggle */
+.mobile-cta-item {
+  display: none;
+}
+
 .mobile-toggle {
   display: none;
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
-  color: var(--color-forest-dark);
-}
-
-.mobile-toggle svg {
-  width: 28px;
-  height: 28px;
-  stroke: currentColor;
-}
-
-/* ==========================================================================
-   HERO SECTIONS (UNIFIED DESIGN ACROSS ALL PAGES)
-   ========================================================================== */
-.hero-section {
-  position: relative;
-  min-height: 65vh;
-  display: flex;
+  padding: 8px;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 5.5rem 0;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  color: var(--color-white);
+  gap: 5px;
+  border-radius: var(--radius-sm);
+  z-index: 1001;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(15, 46, 26, 0.82) 0%,
-    rgba(21, 56, 35, 0.75) 50%,
-    rgba(10, 32, 18, 0.85) 100%
-  );
-  z-index: 1;
+.hamburger-bar {
+  display: block;
+  width: 25px;
+  height: 2.5px;
+  background-color: var(--color-forest-dark);
+  border-radius: 3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 820px;
+.mobile-toggle.active .hamburger-bar:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
 }
 
-.badge-tag {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--color-sage-light);
-  margin-bottom: 1.25rem;
+.mobile-toggle.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
 }
 
-.badge-tag.accent-gold {
-  color: var(--color-gold);
-}
-
-.hero-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.3rem, 5vw, 3.8rem);
-  font-weight: 500;
-  line-height: 1.15;
-  color: var(--color-white);
-  margin-bottom: 1.4rem;
-  letter-spacing: -0.02em;
-}
-
-.hero-subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  line-height: 1.65;
-  color: #E3ECE5;
-  margin-bottom: 2.2rem;
-  max-width: 720px;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.2rem;
+.mobile-toggle.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
 }
 
 /* ==========================================================================
@@ -379,6 +321,7 @@ img {
   transition: all var(--transition-normal);
   line-height: 1;
   gap: 0.5rem;
+  touch-action: manipulation;
 }
 
 .btn-white {
@@ -449,6 +392,502 @@ img {
   box-shadow: 0 6px 18px rgba(245, 197, 66, 0.35);
 }
 
+.badge-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-sage-light);
+  margin-bottom: 1.25rem;
+}
+
+.badge-tag.accent-gold {
+  color: var(--color-gold);
+}
+
+.status-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #25D366;
+  margin-right: 6px;
+  box-shadow: 0 0 8px #25D366;
+}
+
+/* ==========================================================================
+   HOMEPAGE HERO (PRESERVED AS ORIGINAL)
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  padding: 5.5rem 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: var(--color-white);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 46, 26, 0.82) 0%,
+    rgba(21, 56, 35, 0.75) 50%,
+    rgba(10, 32, 18, 0.85) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-white);
+  margin-bottom: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.65;
+  color: #E3ECE5;
+  margin-bottom: 2.2rem;
+  max-width: 720px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* ==========================================================================
+   CREATIVE DESKTOP HERO LAYOUTS (FOR SUBPAGES)
+   ========================================================================== */
+
+/* 1. Services Hero: Technical Showcase Split */
+.hero-services {
+  background: linear-gradient(135deg, rgba(10,32,18,0.95) 0%, rgba(21,56,35,0.9) 100%), url('../images/section_bg_0.webp') center/cover no-repeat;
+  padding: 5.5rem 0 4.5rem;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-services .hero-title,
+.hero-about .hero-title,
+.hero-pm .hero-title,
+.hero-subsidy .hero-title,
+.hero-projects .hero-title,
+.hero-blog .hero-title,
+.hero-contact .hero-title {
+  color: var(--color-white) !important;
+}
+
+.hero-services .hero-subtitle,
+.hero-about .hero-subtitle,
+.hero-pm .hero-subtitle,
+.hero-subsidy .hero-subtitle,
+.hero-projects .hero-subtitle,
+.hero-blog .hero-subtitle,
+.hero-contact .hero-subtitle {
+  color: #E3ECE5 !important;
+}
+
+.services-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.spec-preview-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.spec-image-box {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 220px;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.spec-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spec-badge-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--color-forest-dark);
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-gold);
+}
+
+.spec-points-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.spec-point {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-sm);
+}
+
+.spec-point-val {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1.1;
+}
+
+.spec-point-lbl {
+  font-size: 0.75rem;
+  color: #CBD7CE;
+  margin-top: 0.2rem;
+  font-family: var(--font-heading);
+}
+
+/* 2. About Hero: Asymmetric Editorial + Stats Ribbon */
+.hero-about {
+  background: linear-gradient(135deg, #0A2012 0%, #0F2E1A 55%, #153823 100%);
+  padding: 5.5rem 0 3.5rem;
+  color: var(--color-white);
+  position: relative;
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.about-hero-card {
+  position: relative;
+}
+
+.about-hero-img {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.about-hero-img img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.about-quote-pill {
+  position: absolute;
+  bottom: -15px;
+  left: 20px;
+  right: 20px;
+  background: var(--color-white);
+  color: var(--color-forest-dark);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.about-stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 1.6rem 2rem;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-box-num {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.stat-box-desc {
+  font-size: 0.82rem;
+  color: #DCE6DE;
+  font-family: var(--font-heading);
+  margin-top: 0.3rem;
+}
+
+/* 3. PM Surya Ghar Hero: Official Scheme Hub & Slabs Matrix */
+.hero-pm {
+  background: linear-gradient(135deg, #0A2012 0%, #0F2E1A 50%, #153823 100%);
+  padding: 5rem 0 4.5rem;
+  color: var(--color-white);
+}
+
+.pm-hero-header {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto 3rem;
+}
+
+.pm-slabs-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pm-slab-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  padding: 2.2rem 1.8rem;
+  text-align: center;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.pm-slab-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--color-gold);
+  transform: translateY(-4px);
+}
+
+.pm-slab-card.featured {
+  background: linear-gradient(180deg, rgba(245, 197, 66, 0.16) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 2px solid var(--color-gold);
+}
+
+.pm-featured-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-gold);
+  color: var(--color-forest-dark);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.85rem;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pm-slab-capacity {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.pm-slab-subsidy {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.pm-slab-units {
+  font-size: 0.9rem;
+  color: #CBD7CE;
+  margin-bottom: 1.25rem;
+}
+
+/* 4. Solar Subsidy Hero: Direct Interactive Calculator in Hero */
+.hero-subsidy {
+  background: linear-gradient(135deg, rgba(10,32,18,0.94) 0%, rgba(21,56,35,0.9) 100%), url('../images/section_bg_0.webp') center/cover no-repeat;
+  padding: 5rem 0 4.5rem;
+  color: var(--color-white);
+}
+
+.subsidy-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-calc-container {
+  background: var(--color-white);
+  color: var(--color-forest-dark);
+  border-radius: var(--radius-lg);
+  padding: 2.4rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* 5. Projects Hero: Installation Reel Showcase */
+.hero-projects {
+  background: linear-gradient(135deg, #0A2012 0%, #0F2E1A 60%, #153823 100%);
+  padding: 5rem 0 4rem;
+  color: var(--color-white);
+}
+
+.projects-hero-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 3rem;
+}
+
+.projects-hero-reel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.hero-reel-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  height: 230px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.hero-reel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hero-reel-item:hover img {
+  transform: scale(1.08);
+}
+
+.hero-reel-caption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 1.25rem 1rem 0.85rem;
+  background: linear-gradient(to top, rgba(10,32,18,0.95), transparent);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+/* 6. Blog Hero: Spotlight Article Layout */
+.hero-blog {
+  background: linear-gradient(135deg, #0A2012 0%, #0F2E1A 60%, #153823 100%);
+  padding: 5rem 0 4rem;
+  color: var(--color-white);
+}
+
+.blog-spotlight-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.spotlight-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.spotlight-img-box {
+  height: 220px;
+  overflow: hidden;
+}
+
+.spotlight-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spotlight-info {
+  padding: 1.5rem;
+}
+
+.spotlight-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.spotlight-tag {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+}
+
+/* 7. Contact Hero: Split Rapid Inquiry */
+.hero-contact {
+  background: linear-gradient(135deg, #0A2012 0%, #0F2E1A 60%, #153823 100%);
+  padding: 5rem 0 4.5rem;
+  color: var(--color-white);
+}
+
+.contact-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-contact-card {
+  background: var(--color-white);
+  color: var(--color-forest-dark);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
 /* ==========================================================================
    SECTIONS & PALETTE COMBINATIONS
    ========================================================================== */
@@ -461,7 +900,6 @@ img {
   padding: 3.5rem 0;
 }
 
-/* 1. Sage Section (Signature) */
 .section-sage {
   background-color: var(--color-sage);
   color: var(--color-text-body);
@@ -475,7 +913,6 @@ img {
   color: var(--color-forest-dark);
 }
 
-/* 2. White Section */
 .section-white {
   background-color: var(--color-white);
   color: var(--color-text-body);
@@ -489,7 +926,6 @@ img {
   color: var(--color-forest-dark);
 }
 
-/* 3. Deep Forest Section */
 .section-forest {
   background-color: var(--color-forest-dark);
   color: var(--color-text-light);
@@ -553,7 +989,6 @@ img {
   gap: 1.5rem;
 }
 
-/* Card Styles */
 .card {
   background-color: var(--color-white);
   border: 1px solid var(--color-sage-border);
@@ -616,7 +1051,6 @@ img {
   flex-grow: 1;
 }
 
-/* Sage Card (used on white backgrounds) */
 .card-sage {
   background-color: var(--color-sage);
   border-color: var(--color-sage-border);
@@ -627,7 +1061,6 @@ img {
   border-color: var(--color-green-accent);
 }
 
-/* Forest Card (used for highlights) */
 .card-forest {
   background-color: var(--color-forest);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -646,7 +1079,7 @@ img {
   color: #DCE6DE;
 }
 
-/* Steps / Process Component (Home Section 3) */
+/* Process steps */
 .process-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -692,9 +1125,7 @@ img {
   line-height: 1.55;
 }
 
-/* ==========================================================================
-   INTERACTIVE SOLAR SUBSIDY CALCULATOR
-   ========================================================================== */
+/* Calculator Component */
 .calc-box {
   background-color: var(--color-white);
   border: 2px solid var(--color-sage-border);
@@ -780,9 +1211,7 @@ img {
   margin-top: 0.3rem;
 }
 
-/* ==========================================================================
-   FORMS (CONTACT & NEWSLETTER)
-   ========================================================================== */
+/* Forms */
 .contact-form-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-sage-border);
@@ -811,7 +1240,7 @@ img {
   border: 1.5px solid var(--color-sage-border);
   background-color: #FAFCFA;
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 16px; /* 16px prevents iOS zoom */
   color: var(--color-text-body);
   transition: all var(--transition-fast);
 }
@@ -828,7 +1257,6 @@ textarea.form-control {
   resize: vertical;
 }
 
-/* Info Box */
 .contact-info-list {
   display: flex;
   flex-direction: column;
@@ -870,9 +1298,7 @@ textarea.form-control {
   color: var(--color-green-accent);
 }
 
-/* ==========================================================================
-   PROJECTS GALLERY
-   ========================================================================== */
+/* Projects Gallery */
 .project-gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -929,9 +1355,7 @@ textarea.form-control {
   line-height: 1.5;
 }
 
-/* ==========================================================================
-   FOOTER (UNIFIED ON ALL PAGES)
-   ========================================================================== */
+/* Footer */
 .site-footer {
   background-color: var(--color-forest-dark);
   color: #DCE6DE;
@@ -1073,76 +1497,10 @@ textarea.form-control {
 }
 
 /* ==========================================================================
-   MOBILE-FIRST RESPONSIVE PERFECTION (TABLETS, PHONES & SMALL SCREENS)
+   RESPONSIVE DESIGN (ONLY ACTIVE ON SMALLER SCREENS)
    ========================================================================== */
 
-/* Prevent unwanted horizontal overflow */
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-body.nav-open {
-  overflow: hidden;
-  touch-action: none;
-}
-
-/* Form inputs: 16px font-size to prevent iOS Safari auto-zoom */
-.form-control, input, select, textarea {
-  font-size: 16px !important;
-}
-
-/* Touch targets */
-.btn, .capacity-btn, .nav-links li a, .social-icon-btn, .mobile-toggle {
-  touch-action: manipulation;
-}
-
-/* Mobile Toggle Hamburger Animation */
-.mobile-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  width: 44px;
-  height: 44px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  border-radius: var(--radius-sm);
-  z-index: 1001;
-}
-
-.hamburger-bar {
-  display: block;
-  width: 25px;
-  height: 2.5px;
-  background-color: var(--color-forest-dark);
-  border-radius: 3px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mobile-toggle.active .hamburger-bar:nth-child(1) {
-  transform: translateY(7.5px) rotate(45deg);
-}
-
-.mobile-toggle.active .hamburger-bar:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.mobile-toggle.active .hamburger-bar:nth-child(3) {
-  transform: translateY(-7.5px) rotate(-45deg);
-}
-
-/* Mobile CTA hidden on desktop by default */
-.mobile-cta-item {
-  display: none;
-}
-
-/* Breakpoint: Laptops & Tablets (max-width: 992px) */
+/* Laptops & Tablets (max-width: 992px) */
 @media (max-width: 992px) {
   .grid-3, .grid-4 {
     grid-template-columns: repeat(2, 1fr);
@@ -1183,7 +1541,7 @@ body.nav-open {
   }
 }
 
-/* Breakpoint: Mobile Devices & Tablets (max-width: 860px) */
+/* Mobile Devices & Tablets (max-width: 860px) */
 @media (max-width: 860px) {
   .site-header .nav-wrapper {
     height: 72px;
@@ -1217,7 +1575,6 @@ body.nav-open {
     box-shadow: 0 4px 14px rgba(15, 46, 26, 0.15);
   }
 
-  /* Full Screen / Dropdown Mobile Drawer */
   .nav-links {
     position: fixed;
     top: 72px;
@@ -1258,7 +1615,7 @@ body.nav-open {
   }
 
   .nav-links li a::after {
-    display: none; /* remove desktop underline on mobile */
+    display: none;
   }
 
   .nav-links li a.active {
@@ -1270,7 +1627,7 @@ body.nav-open {
   }
 }
 
-/* Breakpoint: Mobile Phones (max-width: 768px) */
+/* Mobile Phones (max-width: 768px) */
 @media (max-width: 768px) {
   .section {
     padding: 3.5rem 0;
@@ -1312,7 +1669,6 @@ body.nav-open {
     margin-bottom: 2.2rem;
   }
 
-  /* 1-column layouts */
   .grid-2,
   .grid-3,
   .grid-4,
@@ -1324,7 +1680,6 @@ body.nav-open {
     gap: 1.5rem;
   }
 
-  /* Card paddings */
   .card {
     padding: 1.5rem;
     border-radius: var(--radius-md);
@@ -1334,7 +1689,6 @@ body.nav-open {
     font-size: 1.25rem;
   }
 
-  /* Calculator on mobile */
   .calc-box,
   .hero-calc-container {
     padding: 1.5rem 1.25rem;
@@ -1364,14 +1718,12 @@ body.nav-open {
     font-size: 1.65rem;
   }
 
-  /* Contact Cards & Form */
   .contact-form-card,
   .hero-contact-card {
     padding: 1.6rem 1.25rem;
     border-radius: var(--radius-md);
   }
 
-  /* Footer */
   .site-footer {
     padding: 3.5rem 0 1.5rem;
   }
@@ -1388,7 +1740,6 @@ body.nav-open {
     gap: 0.75rem;
   }
 
-  /* Floating WhatsApp Button */
   .floating-whatsapp {
     bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
     right: 1rem;
@@ -1397,7 +1748,7 @@ body.nav-open {
   }
 }
 
-/* Breakpoint: Extra Small Phones (max-width: 480px) */
+/* Extra Small Phones (max-width: 480px) */
 @media (max-width: 480px) {
   .hero-actions {
     flex-direction: column;
