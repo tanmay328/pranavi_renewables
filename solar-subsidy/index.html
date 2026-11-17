@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranavi Renewables - Solar Energy Solutions</title>
+  <link rel="icon" type="image/png" href="../images/Pranavi_Logo-300x75.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="../index.html" class="brand-logo" aria-label="Pranavi Renewables Home">
+        <img src="../images/Pranavi_Logo.png" alt="Pranavi Renewables">
+      </a>
+      
+      <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../pm-surya-ghar.html">PM Surya Ghar</a></li>
+          <li><a href="../solar-subsidy.html" class="active">Solar Subsidy</a></li>
+          <li><a href="../our-projects.html">Our Projects</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../contact-us.html">Contact Us</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="../contact-us.html" class="header-cta-btn">
+          <span>Get a Quote</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" style="background-image: url('../images/section_bg_0.webp');">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="badge-tag">SUBSIDY GUIDE</span>
+      <h1 class="hero-title">Solar Subsidy Parameters</h1>
+      <p class="hero-subtitle">Clear, factual overview of central and state solar subsidy slabs, calculation basics, and the discom steps that apply to residential systems. Subsidy amounts depend on scheme rules and system capacity. Confirm current figures with the official portal before deciding.</p>
+      <div class="hero-actions">
+        <a href="#calculator" class="btn btn-white">Use Subsidy Calculator</a>
+        <a href="../contact-us.html" class="btn btn-outline-white">Consult Our Specialists</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmark Subsidy by System Size (Sage Background) -->
+  <section class="section section-sage">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge-tag">CAPACITY SLABS</span>
+        <h2 class="section-title">Benchmark subsidy by system size</h2>
+        <p class="section-desc">Subsidy structures are typically organized by kilowatt capacity. Standard residential systems up to 3 kW and larger systems follow different calculation bands.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <span class="card-category">Tier 1</span>
+          <h3 class="card-title">Up to 3 kW</h3>
+          <p class="card-text">Standard residential capacity band. Benchmark subsidy is calculated per kilowatt within published limits set by the applicable scheme: <strong>&#8377;30,000 for 1 kW</strong>, <strong>&#8377;60,000 for 2 kW</strong>, and <strong>&#8377;78,000 for 3 kW</strong>.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-category">Tier 2</span>
+          <h3 class="card-title">Above 3 kW</h3>
+          <p class="card-text">Larger residential and organizational systems. Subsidy calculation caps at &#8377;78,000 for individual residential meters, while residential welfare associations (RWA) and group housings enjoy up to 500 kW dedicated slabs.</p>
+        </div>
+
+        <div class="card">
+          <span class="card-category">Calculation basis</span>
+          <h3 class="card-title">Calculation basis</h3>
+          <p class="card-text">Subsidy is generally based on the installed kilowatt capacity and the rules of the central or state scheme in force at the time of application. Released via DBT upon discom inspection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator (White Background) -->
+  <section class="section section-white" id="calculator">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="badge-tag">ONLINE ESTIMATOR</span>
+        <h2 class="section-title">Calculate your expected subsidy & savings</h2>
+        <p class="section-desc">Select your desired rooftop solar plant capacity to preview government subsidy, roof requirements, and generation estimates.</p>
+      </div>
+
+      <div class="calc-box" style="max-width: 900px; margin: 0 auto;">
+        <span class="calc-selector-label">Choose System Size:</span>
+        <div class="capacity-buttons">
+          <button class="capacity-btn" data-kw="1">1 kW System</button>
+          <button class="capacity-btn" data-kw="2">2 kW System</button>
+          <button class="capacity-btn active" data-kw="3">3 kW System</button>
+          <button class="capacity-btn" data-kw="4">4 kW System</button>
+          <button class="capacity-btn" data-kw="5">5 kW System</button>
+          <button class="capacity-btn" data-kw="10">10 kW System</button>
+        </div>
+
+        <div class="calc-results-grid">
+          <div class="result-item">
+            <div class="result-label">Central Subsidy Amount</div>
+            <div class="result-val" id="subsidyAmount">&#8377;78,000</div>
+            <div class="result-note">Direct DBT bank deposit</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Required Roof Area</div>
+            <div class="result-val" id="roofSpace">300 sq.ft</div>
+            <div class="result-note">Shadow-free flat or pitched roof</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Estimated Bill Savings</div>
+            <div class="result-val" id="annualSavings">&#8377;36,000 / yr</div>
+            <div class="result-note">4,300+ units generated/year</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; text-align: center;">
+          <a href="../contact-us.html" class="btn btn-forest">Apply for this Capacity</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discom Process (Deep Forest Green Background) -->
+  <section class="section section-forest">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="badge-tag accent-gold">DISCOM PROCESS</span>
+        <h2 class="section-title">From feasibility review to sign-off</h2>
+        <p class="section-desc">Connecting a rooftop system to the grid follows a sequence of discom approvals, net meter installation, and commissioning. Each stage must be completed before the next.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <h4 class="step-title">Feasibility review</h4>
+          <p class="step-desc">The discom reviews the technical feasibility of connecting the proposed system to the local network before any installation proceeds.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <h4 class="step-title">Net meter installation</h4>
+          <p class="step-desc">A bi-directional net meter records power exported to the grid and power drawn from it, once the discom approves the connection.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <h4 class="step-title">Commissioning sign-off</h4>
+          <p class="step-desc">After inspection and commissioning, the discom issues sign-off. Verification milestones on the state portal are tracked through this final stage.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <h4 class="step-title">Subsidy Disbursal</h4>
+          <p class="step-desc">Central government processes the DBT payment directly to your bank account within standard portal processing cycles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/Pranavi_Logo.png" alt="Pranavi Renewables Logo">
+          <p>Practical solar energy solutions engineered for residential properties, commercial facilities, and institutional organizations.</p>
+          <div class="footer-social-links">
+            <a href="https://wa.me/+919999728290" class="social-icon-btn" aria-label="WhatsApp" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/pranavirenewables?utm_source=qr&mdxt=MWZmbnpvbHF5d3hqdw==" class="social-icon-btn" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" class="social-icon-btn" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../services.html">Services</a></li>
+            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../our-projects.html">Our Projects</a></li>
+            <li><a href="../blog.html">Solar Guides</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Government Schemes</h4>
+          <ul class="footer-links">
+            <li><a href="../pm-surya-ghar.html">PM Surya Ghar Yojana</a></li>
+            <li><a href="../solar-subsidy.html">Subsidy Parameters</a></li>
+            <li><a href="../pm-surya-ghar.html#documents">Required Documents</a></li>
+            <li><a href="../solar-subsidy.html#calculator">Subsidy Calculator</a></li>
+            <li><a href="../contact-us.html">Apply Through Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-info">
+            <p><strong>Office Address:</strong><br>PLOT NO. 02, KHASRA NO. 1344, VILLAGE SIKROD, GHAZIABAD - 201003, Uttar Pradesh, India</p>
+            <p><strong>Phone:</strong> <a href="tel:+919999728290">+91 99997 28290</a></p>
+            <p><strong>Email:</strong> <a href="mailto:info@pranavirenewables.com">info@pranavirenewables.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pranavi Renewables. All rights reserved.</p>
+        <p>Solar energy planned and engineered for the life of your property.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action -->
+  <a href="https://wa.me/+919999728290?text=Hello%20Pranavi%20Renewables,%20I%20would%20like%20to%20inquire%20about%20solar%20installation." class="floating-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+  </a>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
