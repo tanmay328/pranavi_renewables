@@ -39,16 +39,66 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section" style="background-image: url('images/section_bg_0.webp');">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <span class="badge-tag">SUBSIDY GUIDE</span>
-      <h1 class="hero-title">Solar Subsidy Parameters</h1>
-      <p class="hero-subtitle">Clear, factual overview of central and state solar subsidy slabs, calculation basics, and the discom steps that apply to residential systems. Subsidy amounts depend on scheme rules and system capacity. Confirm current figures with the official portal before deciding.</p>
-      <div class="hero-actions">
-        <a href="#calculator" class="btn btn-white">Use Subsidy Calculator</a>
-        <a href="contact-us.html" class="btn btn-outline-white">Consult Our Specialists</a>
+  <!-- Creative Hero: Embedded Interactive Calculator in Hero -->
+  <section class="hero-subsidy">
+    <div class="container">
+      <div class="subsidy-hero-grid">
+        <div>
+          <span class="badge-tag accent-gold">SUBSIDY PARAMETERS & DISCOM SYNC</span>
+          <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.2vw, 3.5rem);">Solar Subsidy Parameters</h1>
+          <p class="hero-subtitle">Clear, factual overview of central and state solar subsidy slabs, calculation basics, and the discom steps that apply to residential systems. Confirm current figures with the official portal before deciding.</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; color: #E3ECE5;">
+            <li style="display: flex; gap: 0.6rem; align-items: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#F5C542"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>Fixed &#8377;30,000 per kW benchmark up to 2 kW capacity</span>
+            </li>
+            <li style="display: flex; gap: 0.6rem; align-items: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#F5C542"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>Maximum &#8377;78,000 central subsidy for 3 kW and above</span>
+            </li>
+            <li style="display: flex; gap: 0.6rem; align-items: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#F5C542"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>Direct Bank Deposit (DBT) post-discom meter verification</span>
+            </li>
+          </ul>
+          <a href="#discom" class="btn btn-outline-white">DISCOM Approval Flow &darr;</a>
+        </div>
+
+        <div>
+          <div class="hero-calc-container">
+            <span class="calc-selector-label" style="font-size: 1.1rem; color: var(--color-forest-dark);">Interactive Subsidy Estimator:</span>
+            <div class="capacity-buttons">
+              <button class="capacity-btn" data-kw="1">1 kW</button>
+              <button class="capacity-btn" data-kw="2">2 kW</button>
+              <button class="capacity-btn active" data-kw="3">3 kW</button>
+              <button class="capacity-btn" data-kw="4">4 kW</button>
+              <button class="capacity-btn" data-kw="5">5 kW</button>
+              <button class="capacity-btn" data-kw="10">10 kW</button>
+            </div>
+
+            <div class="calc-results-grid" style="margin-top: 1rem; padding: 1.5rem;">
+              <div class="result-item">
+                <div class="result-label">Central Subsidy</div>
+                <div class="result-val" id="subsidyAmount" style="font-size: 1.8rem;">&#8377;78,000</div>
+                <div class="result-note">Direct DBT bank transfer</div>
+              </div>
+              <div class="result-item">
+                <div class="result-label">Roof Space</div>
+                <div class="result-val" id="roofSpace" style="font-size: 1.8rem;">300 sq.ft</div>
+                <div class="result-note">Shadow-free roof area</div>
+              </div>
+              <div class="result-item">
+                <div class="result-label">Bill Savings</div>
+                <div class="result-val" id="annualSavings" style="font-size: 1.8rem;">&#8377;36,000 / yr</div>
+                <div class="result-note">Approx annual cut</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; text-align: center;">
+              <a href="contact-us.html" class="btn btn-forest" style="width: 100%;">Claim Subsidy for this Size &rarr;</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -84,53 +134,8 @@
     </div>
   </section>
 
-  <!-- Interactive Calculator (White Background) -->
-  <section class="section section-white" id="calculator">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="badge-tag">ONLINE ESTIMATOR</span>
-        <h2 class="section-title">Calculate your expected subsidy & savings</h2>
-        <p class="section-desc">Select your desired rooftop solar plant capacity to preview government subsidy, roof requirements, and generation estimates.</p>
-      </div>
-
-      <div class="calc-box" style="max-width: 900px; margin: 0 auto;">
-        <span class="calc-selector-label">Choose System Size:</span>
-        <div class="capacity-buttons">
-          <button class="capacity-btn" data-kw="1">1 kW System</button>
-          <button class="capacity-btn" data-kw="2">2 kW System</button>
-          <button class="capacity-btn active" data-kw="3">3 kW System</button>
-          <button class="capacity-btn" data-kw="4">4 kW System</button>
-          <button class="capacity-btn" data-kw="5">5 kW System</button>
-          <button class="capacity-btn" data-kw="10">10 kW System</button>
-        </div>
-
-        <div class="calc-results-grid">
-          <div class="result-item">
-            <div class="result-label">Central Subsidy Amount</div>
-            <div class="result-val" id="subsidyAmount">&#8377;78,000</div>
-            <div class="result-note">Direct DBT bank deposit</div>
-          </div>
-          <div class="result-item">
-            <div class="result-label">Required Roof Area</div>
-            <div class="result-val" id="roofSpace">300 sq.ft</div>
-            <div class="result-note">Shadow-free flat or pitched roof</div>
-          </div>
-          <div class="result-item">
-            <div class="result-label">Estimated Bill Savings</div>
-            <div class="result-val" id="annualSavings">&#8377;36,000 / yr</div>
-            <div class="result-note">4,300+ units generated/year</div>
-          </div>
-        </div>
-
-        <div style="margin-top: 2rem; text-align: center;">
-          <a href="contact-us.html" class="btn btn-forest">Apply for this Capacity</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Discom Process (Deep Forest Green Background) -->
-  <section class="section section-forest">
+  <section class="section section-forest" id="discom">
     <div class="container">
       <div class="section-header text-center">
         <span class="badge-tag accent-gold">DISCOM PROCESS</span>

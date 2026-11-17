@@ -135,7 +135,7 @@ img {
 }
 
 /* ==========================================================================
-   NAVIGATION / HEADER
+   NAVIGATION / HEADER (FULL WIDTH PINNED: LOGO LEFT, CTA RIGHT)
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -145,6 +145,7 @@ img {
   border-bottom: 1px solid var(--color-sage-border);
   box-shadow: 0 2px 10px rgba(15, 46, 26, 0.04);
   transition: all var(--transition-normal);
+  width: 100%;
 }
 
 .site-header.scrolled {
@@ -153,11 +154,37 @@ img {
   box-shadow: 0 4px 20px rgba(15, 46, 26, 0.08);
 }
 
-.nav-wrapper {
+.site-header .nav-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  width: 100%;
+  max-width: 100% !important;
+  padding-left: clamp(1.25rem, 3.5vw, 3.5rem);
+  padding-right: clamp(1.25rem, 3.5vw, 3.5rem);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: clamp(1rem, 1.8vw, 2rem);
+  margin: 0 auto; /* Nicely centered in between */
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
 }
 
 .brand-logo {
@@ -1142,5 +1169,435 @@ textarea.form-control {
     right: 1.25rem;
     width: 52px;
     height: 52px;
+  }
+}
+
+
+/* ==========================================================================
+   CREATIVE & ENGAGING INDIVIDUAL PAGE HERO LAYOUTS
+   ========================================================================== */
+
+/* 1. Services Hero: Technical Showcase Split */
+.hero-services {
+  background: linear-gradient(135deg, rgba(10,32,18,0.95) 0%, rgba(21,56,35,0.9) 100%), url('../images/section_bg_0.webp') center/cover no-repeat;
+  padding: 5rem 0 4rem;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.spec-preview-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.spec-image-box {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 200px;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.spec-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spec-badge-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--color-forest-dark);
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-gold);
+}
+
+.spec-points-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.spec-point {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-sm);
+}
+
+.spec-point-val {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1.1;
+}
+
+.spec-point-lbl {
+  font-size: 0.75rem;
+  color: #CBD7CE;
+  margin-top: 0.2rem;
+  font-family: var(--font-heading);
+}
+
+/* 2. About Hero: Asymmetric Editorial + Stats Ribbon */
+.hero-about {
+  background: linear-gradient(135deg, #0F2E1A 0%, #153823 60%, #1E4E30 100%);
+  padding: 5rem 0 3rem;
+  color: var(--color-white);
+  position: relative;
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.about-hero-card {
+  position: relative;
+}
+
+.about-hero-img {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.about-hero-img img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.about-quote-pill {
+  position: absolute;
+  bottom: -15px;
+  left: 20px;
+  right: 20px;
+  background: var(--color-white);
+  color: var(--color-forest-dark);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.about-stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 1.6rem 2rem;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-box-num {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.stat-box-desc {
+  font-size: 0.8rem;
+  color: #DCE6DE;
+  font-family: var(--font-heading);
+  margin-top: 0.3rem;
+}
+
+/* 3. PM Surya Ghar Hero: Official Portal Hub & Slabs Matrix */
+.hero-pm {
+  background: linear-gradient(135deg, #0A2012 0%, #0F2E1A 50%, #153823 100%);
+  padding: 4.5rem 0 4rem;
+  color: var(--color-white);
+}
+
+.pm-hero-header {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto 3rem;
+}
+
+.pm-slabs-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pm-slab-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  text-align: center;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.pm-slab-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--color-gold);
+  transform: translateY(-4px);
+}
+
+.pm-slab-card.featured {
+  background: linear-gradient(180deg, rgba(245, 197, 66, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 2px solid var(--color-gold);
+}
+
+.pm-featured-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-gold);
+  color: var(--color-forest-dark);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.85rem;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pm-slab-capacity {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.pm-slab-subsidy {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.pm-slab-units {
+  font-size: 0.88rem;
+  color: #CBD7CE;
+  margin-bottom: 1.25rem;
+}
+
+/* 4. Solar Subsidy Hero: Direct Interactive Calculator in Hero */
+.hero-subsidy {
+  background: linear-gradient(135deg, rgba(15,46,26,0.92) 0%, rgba(21,56,35,0.88) 100%), url('../images/section_bg_0.webp') center/cover no-repeat;
+  padding: 4.5rem 0 4rem;
+  color: var(--color-white);
+}
+
+.subsidy-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-calc-container {
+  background: var(--color-white);
+  color: var(--color-forest-dark);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* 5. Projects Hero: Installation Reel Showcase */
+.hero-projects {
+  background: linear-gradient(135deg, #0A2012 0%, #0F2E1A 60%, #153823 100%);
+  padding: 4.5rem 0 3.5rem;
+  color: var(--color-white);
+}
+
+.projects-hero-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+.projects-hero-reel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.hero-reel-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  height: 220px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.hero-reel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hero-reel-item:hover img {
+  transform: scale(1.08);
+}
+
+.hero-reel-caption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(10,32,18,0.92), transparent);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* 6. Blog Hero: Spotlight Article Layout */
+.hero-blog {
+  background: linear-gradient(135deg, #0F2E1A 0%, #153823 100%);
+  padding: 4.5rem 0 3.5rem;
+  color: var(--color-white);
+}
+
+.blog-spotlight-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.spotlight-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.spotlight-img-box {
+  height: 220px;
+  overflow: hidden;
+}
+
+.spotlight-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spotlight-info {
+  padding: 1.5rem;
+}
+
+.spotlight-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.spotlight-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+/* 7. Contact Hero: Split Rapid Inquiry */
+.hero-contact {
+  background: linear-gradient(135deg, #0A2012 0%, #0F2E1A 60%, #153823 100%);
+  padding: 4.5rem 0 4rem;
+  color: var(--color-white);
+}
+
+.contact-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-contact-card {
+  background: var(--color-white);
+  color: var(--color-forest-dark);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+.status-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #25D366;
+  margin-right: 6px;
+  box-shadow: 0 0 8px #25D366;
+}
+
+@media (max-width: 992px) {
+  .services-hero-grid,
+  .about-hero-grid,
+  .subsidy-hero-grid,
+  .blog-spotlight-grid,
+  .contact-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about-stats-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pm-slabs-hero-grid,
+  .projects-hero-reel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .about-stats-ribbon,
+  .pm-slabs-hero-grid,
+  .projects-hero-reel,
+  .spec-points-list {
+    grid-template-columns: 1fr;
   }
 }

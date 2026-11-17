@@ -39,103 +39,110 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section" style="background-image: url('images/section_bg_0.webp');">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <span class="badge-tag">SOLAR INQUIRIES</span>
-      <h1 class="hero-title">Talk through your property's solar potential</h1>
-      <p class="hero-subtitle">Share your roof dimensions, electrical capacity, and questions about a solar installation. We will follow up to arrange an on-site feasibility survey and shading analysis.</p>
-      <div class="hero-actions">
-        <a href="#inquiry-form" class="btn btn-white">Submit Property Details</a>
-        <a href="https://wa.me/+919999728290" class="btn btn-outline-white" target="_blank" rel="noopener">WhatsApp Direct</a>
+  <!-- Creative Hero: Split Screen Fast Inquiry -->
+  <section class="hero-contact">
+    <div class="container">
+      <div class="contact-hero-grid">
+        <div>
+          <span class="badge-tag accent-gold"><span class="status-dot"></span>ENGINEERS ON STANDBY &bull; RAPID RESPONSE</span>
+          <h1 class="hero-title" style="font-size: clamp(2.3rem, 4.5vw, 3.6rem);">Talk through your property's solar potential</h1>
+          <p class="hero-subtitle">Share your roof dimensions, electrical capacity, and questions about a solar installation. We will follow up to arrange an on-site feasibility survey and shading analysis.</p>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--color-gold);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: #CBD7CE; text-transform: uppercase; font-family: var(--font-heading);">Direct Helpline</div>
+                <a href="tel:+919999728290" style="color: var(--color-white); font-weight: 600; font-size: 1.1rem;">+91 99997 28290</a>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--color-gold);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: #CBD7CE; text-transform: uppercase; font-family: var(--font-heading);">Official Email</div>
+                <a href="mailto:info@pranavirenewables.com" style="color: var(--color-white); font-weight: 600; font-size: 1.1rem;">info@pranavirenewables.com</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/+919999728290" class="btn btn-gold" target="_blank" rel="noopener">Chat on WhatsApp Direct</a>
+        </div>
+
+        <div>
+          <div class="hero-contact-card">
+            <h3 style="font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--color-forest-dark);">Request Rapid Feasibility</h3>
+            <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">Enter preliminary roof or billing details below.</p>
+
+            <form id="contactForm">
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label" for="contactName">Your Name *</label>
+                <input type="text" id="contactName" name="name" class="form-control" placeholder="What's your name?" required>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label" for="contactEmail">Email Address *</label>
+                <input type="email" id="contactEmail" name="email" class="form-control" placeholder="What's your email?" required>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label" for="contactPhone">Phone Number</label>
+                <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="+91 98765 43210">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label" for="contactProperty">Property Type</label>
+                <select id="contactProperty" name="property" class="form-control">
+                  <option value="residential">Residential Villa / Independent House</option>
+                  <option value="housing_society">RWA / Apartment Complex</option>
+                  <option value="commercial">Commercial / Office Building</option>
+                  <option value="industrial">Industrial Shed / Factory</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label" for="contactMessage">Message / Roof Details *</label>
+                <textarea id="contactMessage" name="message" class="form-control" style="min-height: 90px;" placeholder="Tell us about your roof size or monthly bill..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-forest" style="width: 100%;">Submit Inquiry &rarr;</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form & Company Details (Sage Background) -->
-  <section class="section section-sage" id="inquiry-form">
+  <!-- Office & Location Section (Sage Background) -->
+  <section class="section section-sage">
     <div class="container">
-      <div class="grid-2" style="align-items: flex-start;">
-        <!-- Left: Company Details -->
-        <div>
-          <span class="badge-tag">DIRECT ASSISTANCE</span>
-          <h2 class="section-title">Speak with a solar engineer</h2>
-          <p class="section-desc" style="margin-bottom: 2rem;">Whether you are assessing a residential villa, a commercial facility, or applying under the PM Surya Ghar scheme, our technical team is ready to guide you.</p>
-
-          <div class="contact-info-list">
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              </div>
-              <div class="info-content">
-                <h4>Email Us</h4>
-                <p><a href="mailto:info@pranavirenewables.com">info@pranavirenewables.com</a></p>
-                <p style="font-size: 0.85rem; color: var(--color-text-muted);">Inquiries typically answered within 24 hours</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </div>
-              <div class="info-content">
-                <h4>Phone & WhatsApp</h4>
-                <p><a href="tel:+919999728290">+91 99997 28290</a></p>
-                <p style="font-size: 0.85rem; color: var(--color-text-muted);">Mon &ndash; Sat, 9:00 AM &ndash; 6:30 PM IST</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </div>
-              <div class="info-content">
-                <h4>Head Office</h4>
-                <p>PLOT NO. 02, KHASRA NO. 1344, VILLAGE SIKROD, GHAZIABAD 201003, Uttar Pradesh, India</p>
-              </div>
-            </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="info-icon" style="margin-bottom: 1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
+          <h4 class="card-title">Head Office Location</h4>
+          <p class="card-text">PLOT NO. 02, KHASRA NO. 1344, VILLAGE SIKROD, GHAZIABAD - 201003, Uttar Pradesh, India</p>
         </div>
 
-        <!-- Right: Inquiry Form -->
-        <div class="contact-form-card">
-          <h3 style="font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-forest-dark);">Request Property Feasibility</h3>
-          <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 1.8rem;">Enter your contact information and preliminary roof details below.</p>
+        <div class="card">
+          <div class="info-icon" style="margin-bottom: 1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h4 class="card-title">Consultation Hours</h4>
+          <p class="card-text">Monday through Saturday<br>9:00 AM to 6:30 PM IST<br><small style="color: var(--color-green-accent);">On-site surveys available on weekends</small></p>
+        </div>
 
-          <form id="contactForm">
-            <div class="form-group">
-              <label class="form-label" for="contactName">Your Name *</label>
-              <input type="text" id="contactName" name="name" class="form-control" placeholder="What's your name?" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="contactEmail">Email Address *</label>
-              <input type="email" id="contactEmail" name="email" class="form-control" placeholder="What's your email?" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="contactPhone">Phone / Mobile Number</label>
-              <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="+91 98765 43210">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="contactProperty">Property Type</label>
-              <select id="contactProperty" name="property" class="form-control">
-                <option value="residential">Residential Villa / Independent House</option>
-                <option value="housing_society">RWA / Apartment Complex</option>
-                <option value="commercial">Commercial / Office Building</option>
-                <option value="industrial">Industrial Shed / Factory</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="contactMessage">Message / Roof & Billing Details *</label>
-              <textarea id="contactMessage" name="message" class="form-control" placeholder="Share your roof dimensions, approximate monthly electricity bill, or any specific questions..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-forest" style="width: 100%; padding: 1rem;">Submit Inquiry</button>
-          </form>
+        <div class="card">
+          <div class="info-icon" style="margin-bottom: 1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h4 class="card-title">Vendor Accreditations</h4>
+          <p class="card-text">PM Surya Ghar registered vendor with complete DISCOM net-metering liaison and safety compliance.</p>
         </div>
       </div>
     </div>
