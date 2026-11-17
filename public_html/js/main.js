@@ -1,37 +1,57 @@
 /**
- * Pranavi Renewables - Master JavaScript
+ * Pranavi Renewables - Master JavaScript (Mobile & Desktop Responsive)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Mobile Menu Toggle
+  // 1. Mobile Menu Toggle with Animated Hamburger
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.getElementById('navLinks');
+  const siteHeader = document.querySelector('.site-header');
 
   if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      const isExpanded = navLinks.classList.contains('open');
-      mobileToggle.setAttribute('aria-expanded', isExpanded);
+    const toggleMenu = (forceClose = false) => {
+      const isOpen = forceClose ? false : !navLinks.classList.contains('open');
+      navLinks.classList.toggle('open', isOpen);
+      mobileToggle.classList.toggle('active', isOpen);
+      mobileToggle.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('nav-open', isOpen);
+    };
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
     });
 
-    // Close on link click
+    // Close when clicking any nav link
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
+        toggleMenu(true);
       });
+    });
+
+    // Close when clicking outside of the header
+    document.addEventListener('click', (e) => {
+      if (!siteHeader.contains(e.target) && navLinks.classList.contains('open')) {
+        toggleMenu(true);
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        toggleMenu(true);
+      }
     });
   }
 
   // 2. Header Scroll Effect
-  const siteHeader = document.querySelector('.site-header');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      siteHeader.classList.add('scrolled');
+    if (window.scrollY > 30) {
+      siteHeader?.classList.add('scrolled');
     } else {
-      siteHeader.classList.remove('scrolled');
+      siteHeader?.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 
   // 3. Highlight Active Link
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
@@ -51,10 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const spaceVal = document.getElementById('roofSpace');
   const savingsVal = document.getElementById('annualSavings');
 
-  // Subsidy parameters under PM Surya Ghar Muft Bijli Yojana
-  // 1 kW -> ~₹30,000
-  // 2 kW -> ~₹60,000
-  // 3 kW+ -> ~₹78,000 max benchmark
   const subsidyData = {
     1: { subsidy: '₹30,000', space: '100 sq.ft', savings: '₹12,000 / yr' },
     2: { subsidy: '₹60,000', space: '200 sq.ft', savings: '₹24,000 / yr' },
@@ -80,27 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 5. Contact Form Submissions
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+  const contactForms = document.querySelectorAll('#contactForm');
+  contactForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = contactForm.querySelector('[name="name"]')?.value || '';
-      const email = contactForm.querySelector('[name="email"]')?.value || '';
-      const message = contactForm.querySelector('[name="message"]')?.value || '';
+      const name = form.querySelector('[name="name"]')?.value || 'Valued Client';
+      const email = form.querySelector('[name="email"]')?.value || '';
 
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
+      submitBtn.textContent = 'Submitting...';
       submitBtn.disabled = true;
 
       setTimeout(() => {
-        alert(`Thank you, ${name}! Your inquiry has been received. Our solar engineers will contact you at ${email} shortly.`);
-        contactForm.reset();
+        alert(`Thank you, ${name}! Your inquiry has been received. Our solar engineers will contact you at ${email || 'your phone'} shortly.`);
+        form.reset();
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-      }, 700);
+      }, 600);
     });
-  }
+  });
 
   // 6. Newsletter Subscription Form
   const newsletterForm = document.getElementById('newsletterForm');
